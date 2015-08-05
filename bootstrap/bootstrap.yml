@@ -1,0 +1,53 @@
+---
+# Initial checkout of all projects
+# please setup umask properly or you can break permissions in virtual box
+# $ ( umask 022 && ansible-playbook checkout.yml )
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  vars:
+    app_root: ../virtusize
+    # default branches
+    integration_v2_branch: v2
+    frontend_branch: develop
+    widget_branch: develop
+    i18n_branch: develop
+    backend_branch: develop
+    visor_branch: develop
+    cloud_branch: develop
+  tasks:
+    - file:
+        path: '{{ app_root }}'
+        state: directory
+        mode: 0755
+    - git:
+        repo: 'git@github.com:virtusize/{{ item.repo }}.git'
+        dest: '{{ app_root }}/{{ item.name }}'
+        version: '{{ item.branch }}'
+        accept_hostkey: yes
+      with_items:
+          - name: backend
+            repo: backend
+            branch: '{{ backend_branch }}'
+          - name: integration_v2
+            repo: integration
+            branch: '{{ integration_v2_branch }}'
+          - name: frontend
+            repo: frontend
+            branch: '{{ frontend_branch }}'
+          - name: widget
+            repo: widget
+            branch: '{{ widget_branch }}'
+          - name: 'i18n'
+            repo: 'i18n'
+            branch: '{{ i18n_branch }}'
+          - name: visor
+            repo: visor
+            branch: '{{ visor_branch }}'
+      # here could be a task to fix file permissions
+      # - file:
+    - git:
+        repo: 'git@github.com:virtusize/cloud_v2.git'
+        dest: '../cloud_v2'
+        version: '{{ cloud_branch }}'
+        accept_hostkey: yes

@@ -14,7 +14,7 @@
     i18n_branch: develop
     backend_branch: develop
     visor_branch: develop
-    cloud_branch: develop
+    cloud_branch: 'feature/devbox'
   tasks:
     - file:
         path: '{{ app_root }}'

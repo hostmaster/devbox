@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Uncommnt to expose MySQL port
     #config.vm.network "forwarded_port", guest: 3306, host: 3306, auto_correct: true
 
-    # Uncomment for exposed Docker port
+    # Uncomment to expose Docker port
     #config.vm.network "forwarded_port", guest: 2375, host: 2375, auto_correct: true
   end
 

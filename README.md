@@ -29,9 +29,10 @@ virtusize
 
 Open in your browser `http://127.0.0.1:8000/demo`
 
+# Settings 
+There are some options in [Vagrantfile](Vagrantfile) 
 
-
-# Some useful commands
+# Useful commands
 * `vagrant rsync` - synchronize local code changes with VM 
 * `vagrant provision` - runs deployment in VM (build, dependency update, restart services)
 

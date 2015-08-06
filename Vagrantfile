@@ -33,8 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate//vagrant","1"]
   end
 
-  # It is untested yet
-
+# A list of projects in virtusize/ folder 
   folders = [
     "backend",
     "frontend",
@@ -66,6 +65,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                             group: "coco"
   end
 
+  # it might be slow 
   #config.vm.synced_folder "./nginx_logs", "/var/log/nginx"
 
   config.vm.provision "ansible" do |ansible|
@@ -81,7 +81,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # ansible.skip_tags = [ 'api', 'visor', 'backend', 'all_frontend' ]
 
     ansible.extra_vars = {
-      # by default exposed http port is 8000,
+      # by default exposed http port is 8000
       #http_port: 8000,
 
       # force rebuild/restart update dependencies even without code change

@@ -1,8 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-require 'fileutils'
-
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -43,8 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     "widget"
   ]
   for f in folders do
-    FileUtils.mkdir_p "virtusize/#{f}", :mode => 0755 unless File.directory?("virtusize/#{f}")
-      
+    
     config.vm.synced_folder "virtusize/#{f}",
                             "/home/coco/virtusize/#{f}",
                             type: "rsync",

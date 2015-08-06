@@ -9,8 +9,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "devbox"
 #  config.vm.box = "devbox"
-#  config.vm.box_url = "https://s3.amazonaws.com/virtusize-devbox/devbox.box"
-  config.vm.box = "file://package.box"
+ config.vm.box_url = "https://s3.amazonaws.com/virtusize-devbox/devbox.box"
+# config.vm.box = "file://package.box"
 
   config.vm.define "devbox", autostart: true do |vbox|
     config.vm.network "forwarded_port", guest: 80, host: 8000, auto_correct: true
